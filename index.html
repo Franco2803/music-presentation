@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Music Taste - Before vs Now</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: #050505;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .presentation {
+      width: 100%;
+    }
+
+    .slide {
+      min-height: 100vh;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at top right, rgba(0,255,140,0.12), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(170,0,255,0.12), transparent 25%),
+        #070707;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.02), transparent);
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 5rem;
+      line-height: 1;
+      margin-bottom: 25px;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .green {
+      color: #65ff8f;
+    }
+
+    .purple {
+      color: #c17dff;
+    }
+
+    p {
+      max-width: 900px;
+      line-height: 1.8;
+      font-size: 1.2rem;
+      color: #d0d0d0;
+    }
+
+    ul {
+      margin-top: 25px;
+      padding-left: 25px;
+      max-width: 850px;
+    }
+
+    li {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      color: #f0f0f0;
+    }
+
+    .slide-number {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #65ff8f, #9f59ff);
+      color: black;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(101,255,143,0.4);
+    }
+
+    .artists {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .artist-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .artist-card:hover {
+      transform: translateY(-5px);
+      border-color: #65ff8f;
+      box-shadow: 0 0 25px rgba(101,255,143,0.2);
+    }
+
+    .artist-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 15px;
+    }
+
+    .artist-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .quote-box {
+      margin-top: 35px;
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid #65ff8f;
+      padding: 25px;
+      border-radius: 14px;
+      max-width: 900px;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .column {
+      background: rgba(255,255,255,0.04);
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .column h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .thank-you {
+      text-align: center;
+      align-items: center;
+    }
+
+    .thank-you h1 {
+      font-size: 6rem;
+      background: linear-gradient(90deg, #65ff8f, #c17dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .music-bar {
+      width: 300px;
+      height: 6px;
+      background: linear-gradient(90deg, #65ff8f, #9f59ff);
+      margin-top: 25px;
+      border-radius: 999px;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px rgba(101,255,143,0.2);
+      }
+      to {
+        box-shadow: 0 0 25px rgba(193,125,255,0.7);
+      }
+    }
+
+    @media(max-width: 900px) {
+      .slide {
+        padding: 40px 25px;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="presentation">
+
+  <section class="slide">
+    <div class="slide-number">1</div>
+    <h1>My Music Taste:<br><span class="green">Before vs Now</span></h1>
+    <p>
+      This presentation is about how my music taste changed over the years, from gaming music and hype songs during quarantine to more emotional and personal music today.
+    </p>
+
+    <ul>
+      <li>The music I listened to before</li>
+      <li>The artists that influenced me</li>
+      <li>What I listen to now</li>
+      <li>How music became more emotional for me</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">2</div>
+    <h2>Why Music Is <span class="green">Important To Me</span></h2>
+
+    <p>
+      Music is part of my daily life. I listen to music almost every day because it changes my mood, helps me relax and reminds me of important moments.
+    </p>
+
+    <ul>
+      <li>Music changes my energy and emotions</li>
+      <li>I use music when gaming, studying or relaxing</li>
+      <li>Different songs remind me of different stages of my life</li>
+      <li>I enjoy discovering new artists and genres</li>
+    </ul>
+
+    <div class="quote-box">
+      “For me, music is not only entertainment. It is also connected to memories, emotions and people.”
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">3</div>
+    <h2>My Music Taste <span class="purple">Before</span></h2>
+
+    <p>
+      During the pandemic and gaming years, my music taste was very different.
+    </p>
+
+    <ul>
+      <li>Gaming highlight music</li>
+      <li>Montage and edit songs</li>
+      <li>Fast trap music</li>
+      <li>Viral TikTok songs</li>
+      <li>Quarantine playlists</li>
+      <li>Hype music with strong bass</li>
+    </ul>
+
+    <div class="quote-box">
+      The music I listened to before gave me energy and matched the gaming videos and online content I watched every day.
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">4</div>
+    <h2>Gaming & Internet <span class="green">Influence</span></h2>
+
+    <p>
+      Gaming and internet culture influenced my music taste a lot.
+    </p>
+
+    <div class="two-columns">
+      <div class="column">
+        <h3 class="green">What I Watched</h3>
+        <ul>
+          <li>Gaming highlights</li>
+          <li>Fortnite montages</li>
+          <li>Call of Duty edits</li>
+          <li>Streamers and YouTubers</li>
+        </ul>
+      </div>
+
+      <div class="column">
+        <h3 class="purple">Music Style</h3>
+        <ul>
+          <li>Strong bass</li>
+          <li>Fast beats</li>
+          <li>Energetic drops</li>
+          <li>Electronic and trap sounds</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">5</div>
+    <h2>Artists I Listened To <span class="purple">Before</span></h2>
+
+    <div class="artists">
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5eb08d6f6b3d6c6d4322d0c7d22">
+        <h3>Travis Scott</h3>
+        <p>Energetic songs and modern trap style.</p>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5eb10f0f8d4fd9c8bbf21965b1b">
+        <h3>Trueno</h3>
+        <p>I loved his freestyle and rap style.</p>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5ebed1fdfb6a0f08f42b8b74fd5">
+        <h3>Nicki Nicole</h3>
+        <p>Very popular during quarantine and social media.</p>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5ebc5d6f68a9ef54c1fac1e0adf">
+        <h3>Lit Killah</h3>
+        <p>I enjoyed his trap songs and freestyles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">6</div>
+    <h2>Freestyle Battles & <span class="green">Trap</span></h2>
+
+    <p>
+      One of my favorite things during quarantine was watching freestyle battles and listening to trap music.
+    </p>
+
+    <ul>
+      <li>The rappers were very creative</li>
+      <li>The battles were intense and exciting</li>
+      <li>I liked the improvisation and audience energy</li>
+      <li>Trap music mixed emotions with hype beats</li>
+    </ul>
+
+    <div class="quote-box">
+      Freestyle battles made urban music feel more alive and entertaining for me.
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">7</div>
+    <h2>What I Listen To <span class="green">Now</span></h2>
+
+    <p>
+      Today my music taste is calmer, more personal and more emotional.
+    </p>
+
+    <ul>
+      <li>Old school music</li>
+      <li>Trap and reggaeton</li>
+      <li>Music with emotional meaning</li>
+      <li>Relaxing and nostalgic songs</li>
+      <li>Different genres mixed together</li>
+    </ul>
+
+    <div class="quote-box">
+      Before, I mostly listened to music for hype and energy. Now, music also helps me remember moments and emotions.
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">8</div>
+    <h2>Why I Listen To <span class="purple">Rubén Rada</span></h2>
+
+    <p>
+      Rubén Rada became very important to me because his music reminds me of my grandfather.
+    </p>
+
+    <ul>
+      <li>My grandfather listened to him a lot</li>
+      <li>His music feels nostalgic and emotional</li>
+      <li>It reminds me of good family moments</li>
+      <li>Now those songs feel more personal to me</li>
+    </ul>
+
+    <div class="quote-box">
+      I think music becomes more special when it is connected to people we love.
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">9</div>
+    <h2>Artists I Listen To <span class="green">Now</span></h2>
+
+    <div class="artists">
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5eb11b22b9d0f8a0ff4d6939ef5">
+        <h3>Hades66</h3>
+        <p>Modern trap and strong energy.</p>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5ebca4fdfe2d0cf4df9b5ef76c1">
+        <h3>Dei V</h3>
+        <p>Modern reggaeton and melodic trap.</p>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5eb1f67bb3c8e8f302ff7f6ba26">
+        <h3>Omar Courtz</h3>
+        <p>Chill urban style and emotional songs.</p>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5ebc9dd5c7b90c0d5857a1f5aa0">
+        <h3>Mora</h3>
+        <p>Relaxed music and modern reggaeton sounds.</p>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://i.scdn.co/image/ab6761610000e5eb4d7a70e44bafc2b1e52bb6d6">
+        <h3>Yan Block</h3>
+        <p>Modern urban music with different vibes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-number">10</div>
+    <h2>Conclusion: My Music Taste <span class="purple">Today</span></h2>
+
+    <div class="two-columns">
+      <div class="column">
+        <h3 class="purple">Before</h3>
+        <ul>
+          <li>Gaming music</li>
+          <li>Viral songs</li>
+          <li>Fast trap</li>
+          <li>Hype music</li>
+        </ul>
+      </div>
+
+      <div class="column">
+        <h3 class="green">Now</h3>
+        <ul>
+          <li>More emotional music</li>
+          <li>Old school influences</li>
+          <li>Different genres</li>
+          <li>Music with personal meaning</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      I think my music taste changed because I changed too. Music is now more connected to emotions, memories and important moments in my life.
+    </div>
+  </section>
+
+  <section class="slide thank-you">
+    <h1>Thank You!</h1>
+    <p style="margin-top:20px; font-size:1.5rem;">Any questions?</p>
+    <div class="music-bar"></div>
+  </section>
+
+</div>
+
+</body>
+</html>
